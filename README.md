@@ -1,1 +1,1 @@
-# Visual Studio Code IDE + CMake Build + Clang-Cl Compiler
+# Visual Studio Code IDE + Clang-Cl Compiler
