@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C/C++: clang-cl.exe build active file",
+            "type": "cppbuild",
+            "command": "clang-cl.exe",
+            "args": [
+                "-fdiagnostics-color",                                          // Enable colorized diagnostics
+                "-fansi-escape-codes",                                          // Enable ANSI escape codes for colorized output in terminal
+                "-Wall",                                                        // Enable all warnings
+                "-Wextra",                                                      // Enable extra warnings
+                "-Werror",                                                      // Treat warnings as errors
+                "/std:c++17",                                                   // Specify C++ Language Standard
+                "${file}",                                                      // Input source file
+                "-o",                                                           // Output file option
+                "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",    // Output executable
+                "/Z7"                                                           // Generate debug information in PDB format
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": ""
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe", // Command to run the executable
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": ""
+        },
+        {
+            "label": "Clean build files",
+            "type": "shell",
+            "command": "rm \"${workspaceFolder}\\build\\*.*\"", // Windows command to delete files
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "detail": "",
+            "problemMatcher": []
+        }
+    ]
+}
